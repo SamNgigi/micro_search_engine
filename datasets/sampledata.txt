@@ -1,0 +1,5 @@
+0   Hello guys! How are you I hope you have fun.
+1   I love learning computer science, software engineering and machine learning
+2   Hi boys this tutorial will be about some important structs
+
+

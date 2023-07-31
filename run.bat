@@ -11,5 +11,6 @@ cmake -DCMAKE_TOOLCHAIN_FILE=C:\Users\samtn\vcpkg\scripts\buildsystems\vcpkg.cma
 cmake --build .
 
 cd ..
-build\Debug\%DIR_NAME%.exe
 build\Debug\%DIR_NAME%_test.exe
+@REM %* allows us to pass command line arguments to out bat script
+build\Debug\%DIR_NAME%.exe %*
