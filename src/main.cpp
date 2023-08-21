@@ -5,6 +5,7 @@
 #include "micro_search_engine.hpp"
 #include "read_input.hpp"
 
+
 int main(int argc, char **argv){
     std::cout << "Hello World!" << std::endl;
 
@@ -18,6 +19,10 @@ int main(int argc, char **argv){
     int k = std::atoi(argv[4]);
     if(read_sizes(&linecounter, &maxLength, argv[2]) == -1) return -1;
     
+    std::unique_ptr<MyMap> mymap = std::make_unique<MyMap>(linecounter, maxLength);
+    if(read_input(mymap, argv[2]) == -1){
+        return -1;
+    }
     std::cout << "Initialization Finished" << std::endl;
     std::cout << "Linecouter: " << linecounter << std::endl << "MaxLength: " << maxLength << std::endl; 
 

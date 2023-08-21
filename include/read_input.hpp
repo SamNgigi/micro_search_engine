@@ -4,4 +4,7 @@
 #include <memory>
 #include <fstream>
 
-int read_sizes(int *lineCounter, int *maxLength, char *docFile);
+#include "MyMap.hpp"
+
+int read_sizes(int *lineCounter, int *maxLength, std::string docFile);
+int read_input(std::unique_ptr<MyMap> &mymap, std::string docFile);
