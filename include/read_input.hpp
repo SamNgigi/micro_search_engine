@@ -7,4 +7,4 @@
 #include "MyMap.hpp"
 
 int read_sizes(int *lineCounter, int *maxLength, std::string docFile);
-int read_input(std::unique_ptr<MyMap> &mymap, std::string docFile);
+int read_input(MyMap *mymap, std::string docFile);

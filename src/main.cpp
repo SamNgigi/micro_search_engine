@@ -19,9 +19,12 @@ int main(int argc, char **argv){
     int k = std::atoi(argv[4]);
     if(read_sizes(&linecounter, &maxLength, argv[2]) == -1) return -1;
     
-    std::unique_ptr<MyMap> mymap = std::make_unique<MyMap>(linecounter, maxLength);
-    if(read_input(mymap, argv[2]) == -1){
+    auto mymap = std::make_unique<MyMap>(linecounter); // initializes map size to lines in document e.g 3 for sample data
+    if(read_input(mymap.get(), argv[2]) == -1){
         return -1;
+    }
+    for(int i=0; i<mymap->getsize(); i++){
+        mymap->print(i);
     }
     std::cout << "Initialization Finished" << std::endl;
     std::cout << "Linecouter: " << linecounter << std::endl << "MaxLength: " << maxLength << std::endl; 
