@@ -2,7 +2,7 @@
 
 int MyMap::insert(const std::string& line, int i) {
     int curr;
-    std::string token = line.substr(0, line.find("\t"));
+    std::string token = line.substr(0, line.find("\t")); // first token separated by "\t"
     curr = std::stoi(token);
     if (curr != i) return -1;
 

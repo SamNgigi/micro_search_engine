@@ -25,6 +25,7 @@ class MyMap{
         void setLengths(int id, int length){lengths[id] = length;}
         int getLengths(int id){return lengths[id];}
         void print(int i){std::cout << " " << documents[i] << "\n";}
+        std::string getDocument(int i){return documents[i];}
         const int getsize(){return (int)documents.size();}
 };
 #endif // MYMAP_H

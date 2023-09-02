@@ -1,5 +1,6 @@
 #include "read_input.hpp"
 #include "MyMap.hpp"
+#include "utils.hpp"
 
 
 int read_sizes(int *lineCounter, int *maxLength, std::string docFile){
@@ -26,10 +27,22 @@ int read_sizes(int *lineCounter, int *maxLength, std::string docFile){
     return 1;
 }
 
+void split(std::string temp, int id, TrieNode* trie, MyMap* mymap){
+    std::vector<std::string> tokens = tokenize(temp, " \t");
+    // std::cout << tokens[0] << "\n";
+    int i = 0;
+    for(auto token : tokens){
+        i++;
+        // std::cout << token << " , ";
+        trie->insert(token, id);
+    }
+    // mymap->setLengths(id, i);
+}
 
-int read_input(MyMap *mymap, std::string docFile){
+int read_input(MyMap *mymap, TrieNode* trie, std::string docFile){
     std::fstream file;
     std::string line;
+    std::string temp;
     file.open(docFile, std::ios::in);
     for(int i=0; i<mymap->getsize(); i++){
         std::getline(file, line);
@@ -37,8 +50,13 @@ int read_input(MyMap *mymap, std::string docFile){
             std::cerr << "Document does not meet the requirements\n";
             return -1;
         }
+        // std::cout << "Document met requirements\n";
+        temp = mymap->getDocument(i);
+        // std::cout << temp << "\n";
+        split(temp, i, trie, mymap);
     }
     file.close();
+    std::cout << "Document Processed\n";
     return 1;
 }
 
