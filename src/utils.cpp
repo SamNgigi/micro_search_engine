@@ -26,7 +26,7 @@ std::vector<std::string> tokenize(const std::string input_string, std::string de
             if(pos > prev) tokens.push_back(line.substr(prev, pos-prev));
             prev = pos+1;
         }
-        if(prev < line.length()) tokens.push_back(line.substr(prev, std::string::npos));
+        if(prev < line.length()) tokens.push_back(line.substr(prev, std::string::npos));    
     }
 
     return tokens;
