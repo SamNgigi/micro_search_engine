@@ -1,14 +1,31 @@
 #include <iostream>
 #include <memory>
 #include <fstream>
+#include <string>
 
 #include "micro_search_engine.hpp"
 #include "read_input.hpp"
 #include "TrieNode.hpp"
 #include "utils.hpp"
 
-int input(std::string input, TrieNode* trie, MyMap* mymap, int k){
+/* int input(std::string input, TrieNode* trie, MyMap* mymap, int k){
     std::vector<std::string> tokens = tokenize(input, "\t\n");
+    return 1;
+} */
+
+int input_manager(std::string input, TrieNode* mytrie, MyMap* mymap, int k){
+    // char* token = strtok(input.data(), " \t\n");
+    std::vector<std::string> tokens = tokenize(input, " \t\n");
+    if(tokens[0].compare("/search") == 0) mysearch(tokens, mytrie, mymap, k);
+    else if(tokens[0].compare("/df") == 0) df(mytrie);
+    else if(tokens[0].compare("/tf") == 0){
+        if(tf(tokens, mytrie) == -1) return -1;
+    }
+    else  if(tokens[0].compare("/exit") ==0 ){
+        std::cout << "Exiting ..." << "\n";
+        return 2;
+    } else return -1;
+    
     return 1;
 }
 
@@ -30,11 +47,16 @@ int main(int argc, char **argv){
     if(read_input(mymap.get(), mytrie.get(), argv[2]) == -1){
         return -1;
     }
-    std::cout << "Initialization Finished" << std::endl;
-    for(int i=0; i<mymap->getsize(); i++){
-        mymap->print(i);
+    std::cout << "Database Ready" << std::endl;
+    std::string input = "";
+    size_t input_len = 0;
+    while(1){
+        std::getline(std::cin, input);
+        int result = input_manager(input, mytrie.get(), mymap.get(), k);
+        if(result == -1) std::cout << "Wrong input" << std::endl;
+        else if(result == 2) break;
+
     }
-    std::cout << "Linecouter: " << linecounter << std::endl << "MaxLength: " << maxLength << std::endl; 
 
     return 0;
 }
