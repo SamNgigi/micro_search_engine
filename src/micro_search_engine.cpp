@@ -15,7 +15,6 @@ int tf(std::vector<std::string> tokens, TrieNode* mytrie){
         std::cerr << "Not enough arguments. Number & string needed.\n";
         return -1;
     }
-    // for(auto t : tokens) std::cout << t << "\n";
     if(!isDigit(tokens[1])){
         std::cerr << "Invalid second arguments: Needs to be a digit.\n";
         return -1;
