@@ -3,10 +3,13 @@
 
 #include <iostream>
 #include <cstring>
+#include <cctype>
+#include <algorithm>
 #include <vector>
 
 #include "TrieNode.hpp"
 #include "MyMap.hpp"
+#include "utils.hpp"
 
 
 void mysearch(std::vector<std::string> token, TrieNode* trie, MyMap* mymap, int k);

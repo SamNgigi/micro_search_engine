@@ -21,13 +21,22 @@ std::vector<std::string> tokenize(const std::string input_string, std::string de
 
     while(std::getline(ss, line)){
         size_t prev = 0, pos;
-        while((pos = line.find_first_of(delimiters, prev)) != std::string::npos){ // if we aren't at the end of the string
 
+        // While current position where delimiter is found starting from the beginning
+        // of the string is not equal to the end of the string 
+        while((pos = line.find_first_of(delimiters, prev)) != std::string::npos){ 
+            // if current position is greater than the previous position
+            // add the substring between previous and current position to vector        
             if(pos > prev) tokens.push_back(line.substr(prev, pos-prev));
+            // previous is now one more than current position
             prev = pos+1;
         }
         if(prev < line.length()) tokens.push_back(line.substr(prev, std::string::npos));    
     }
 
     return tokens;
+}
+
+bool isDigit(const std::string& str){
+    return std::all_of(str.begin(), str.end(), [](char c){return std::isdigit(c);});
 }
