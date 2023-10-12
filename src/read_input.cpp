@@ -27,19 +27,18 @@ int read_sizes(int *lineCounter, int *maxLength, std::string docFile){
     return 1;
 }
 
-void split(std::string temp, int id, TrieNode* trie, MyMap* mymap){
-    std::vector<std::string> tokens = tokenize(temp, " \t");
-    // std::cout << tokens[0] << "\n";
+void split(std::string temp, int id, TrieNode* mytrie, MyMap* mymap){
+    std::istringstream iss(temp);
+    std::string token;
     int i = 0;
-    for(auto token : tokens){
+    while(iss  >> token){
         i++;
-        // std::cout << token << " , ";
-        trie->insert(token, id);
+        mytrie->insert(token, id);
     }
-    // mymap->setLengths(id, i);
+    mymap->setLengths(id, i);
 }
 
-int read_input(MyMap *mymap, TrieNode* trie, std::string docFile){
+int read_input(MyMap *mymap, TrieNode* mytrie, std::string docFile){
     std::fstream file;
     std::string line;
     std::string temp;
@@ -53,7 +52,7 @@ int read_input(MyMap *mymap, TrieNode* trie, std::string docFile){
         // std::cout << "Document met requirements\n";
         temp = mymap->getDocument(i);
         // std::cout << temp << "\n";
-        split(temp, i, trie, mymap);
+        split(temp, i, mytrie, mymap);
     }
     file.close();
     std::cout << "Document Processed\n";

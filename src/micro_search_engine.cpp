@@ -10,6 +10,10 @@ void df(TrieNode* trie){
 }
 
 int tf(std::vector<std::string> tokens, TrieNode* mytrie){
+    /**
+     * @brief Returns the frequency of a word in a given document
+     * 
+     */
     // std::vector<std::string> tokens2 = std::vector<std::string>(tokens.begin()+1, tokens.end());
     if(tokens.size() < 2){
         std::cerr << "Not enough arguments. Number & string needed.\n";
@@ -24,6 +28,6 @@ int tf(std::vector<std::string> tokens, TrieNode* mytrie){
         std::cerr << "Not enough arguments. String needed\n";
         return -1;
     }
-    std::cout << "Not implemented yet" << "\n";
+    std::cout << id << " " << tokens[2] <<  " " << mytrie->searchWord(id, tokens[2], 0) << "\n";
     return 0;
 }

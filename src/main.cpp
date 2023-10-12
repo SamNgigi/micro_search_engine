@@ -48,6 +48,9 @@ int main(int argc, char **argv){
         return -1;
     }
     std::cout << "Database Ready" << std::endl;
+
+//    TrieNode::printTrie(mytrie.get());
+
     std::string input = "";
     size_t input_len = 0;
     while(1){

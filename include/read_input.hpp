@@ -9,5 +9,6 @@
 #include "TrieNode.hpp"
 
 int read_sizes(int *lineCounter, int *maxLength, std::string docFile);
+void split(std::string temp, int id, TrieNode* trie, MyMap* map);
 int read_input(MyMap *mymap, TrieNode* trie, std::string docFile);
 
