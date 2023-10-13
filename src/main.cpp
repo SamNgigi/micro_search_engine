@@ -17,7 +17,7 @@ int input_manager(std::string input, TrieNode* mytrie, MyMap* mymap, int k){
     // char* token = strtok(input.data(), " \t\n");
     std::vector<std::string> tokens = tokenize(input, " \t\n");
     if(tokens[0].compare("/search") == 0) mysearch(tokens, mytrie, mymap, k);
-    else if(tokens[0].compare("/df") == 0) df(mytrie);
+    else if(tokens[0].compare("/df") == 0) df(tokens, mytrie);
     else if(tokens[0].compare("/tf") == 0){
         if(tf(tokens, mytrie) == -1) return -1;
     }

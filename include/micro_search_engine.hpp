@@ -13,6 +13,6 @@
 
 
 void mysearch(std::vector<std::string> token, TrieNode* trie, MyMap* mymap, int k);
-void df(TrieNode* trie); // ? Depth-First traversal?
-int tf(std::vector<std::string> token, TrieNode* trie);// ? What does this function do?
+void df(std::vector<std::string> tokens, TrieNode* trie); // ? Returns how many document lines word occurs in 
+int tf(std::vector<std::string> token, TrieNode* trie);// ? Returns a word frequency in a document line.
 #endif //MICRO_SEARCH_ENGINE_HPP

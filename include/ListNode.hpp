@@ -17,6 +17,7 @@ class ListNode{
         ListNode(int docId): id(docId), counter(0), next(nullptr){}
         void add(int docId);
         int search(int id);
+        int volume();
 
 };
 

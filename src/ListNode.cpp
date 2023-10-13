@@ -16,3 +16,8 @@ int ListNode::search(int docId){
         else return next->search(docId);
     }
 }
+
+int ListNode::volume(){
+    if(next != nullptr) return 1 + next->volume();
+    else return 1;
+}

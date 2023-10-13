@@ -48,3 +48,21 @@ int TrieNode::searchWord(int id, std::string word, int current){
     }
     return 0;
 }
+
+int TrieNode::docSearchWord(std::string word, int current){
+
+    if(word[current] == value){
+        if(current == word.length()-1){
+            if(list != nullptr) return list->volume();
+            else return 0;
+        }else{
+            if(child != nullptr) return child->docSearchWord(word, current+1);
+            else return 0;
+        }
+    }else {
+        if(sibling != nullptr) return sibling->docSearchWord(word, current);
+        else return 0;
+    }
+
+    return 0;
+}

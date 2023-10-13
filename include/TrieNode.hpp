@@ -20,7 +20,9 @@ class TrieNode{
         TrieNode(): value(-1), sibling(nullptr), child(nullptr), list(nullptr){}
         void insert(std::string token, int id, int idx=0);
         int searchWord(int id, std::string word, int current);
+        int docSearchWord(std::string word, int current);
         static void printTrie(TrieNode* node, std::string currentWord="");
+
 
 };
 
