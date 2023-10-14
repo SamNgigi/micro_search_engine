@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <cstring>
+#include <algorithm>
 
 #include "ListNode.hpp"
 
@@ -21,6 +23,7 @@ class TrieNode{
         void insert(std::string token, int id, int idx=0);
         int searchWord(int id, std::string word, int current);
         int docSearchWord(std::string word, int current);
+        void docSearchAll(std::string& buffer, int current);
         static void printTrie(TrieNode* node, std::string currentWord="");
 
 

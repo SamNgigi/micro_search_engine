@@ -66,3 +66,22 @@ int TrieNode::docSearchWord(std::string word, int current){
 
     return 0;
 }
+
+void TrieNode::docSearchAll(std::string& buffer, int current){
+    /**
+     * @brief Returns the number of document lines all the words in a document a word occurs 
+     * 
+     */
+    buffer[current] = value;
+    std::string temp = buffer;
+
+    temp.erase(std::find_if(temp.rbegin(), temp.rend(), [](unsigned char c){
+        return c != '\0';
+    }).base(), temp.end());
+
+    if(list != nullptr) std::cout << temp << " " << list->volume() << "\n";
+    if(child != nullptr) child->docSearchAll(buffer, current+1);
+    if(sibling != nullptr) sibling->docSearchAll(buffer, current);
+    buffer[current] = '\0';
+
+}

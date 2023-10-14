@@ -10,9 +10,17 @@ void df(std::vector<std::string> tokens, TrieNode* trie){
      * @brief Returns how many document lines our word is in
      * 
      */
-    std::string token = tokens[1]; // retrieve work after command
+   
 
-    if(!token.empty()) std::cout << token << " " << trie->docSearchWord(token, 0) << "\n";
+    if(tokens.size() == 2){
+        std::string token = tokens[1]; // retrieve work after command
+        std::cout << token << " " << trie->docSearchWord(token, 0) << "\n";
+    }
+    else{
+
+        std::string buffer(256, '\0');
+        trie->docSearchAll(buffer, 0);
+    }
 
     // std::cout << "Not implemented yet" << "\n";
 }
